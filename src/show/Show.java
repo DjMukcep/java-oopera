@@ -1,7 +1,7 @@
 package show;
 
 import person.Actor;
-import person.Person;
+import person.Director;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ public abstract class Show {
 
     protected final String title;
     protected final int duration;
-    protected final Person director;
+    protected final Director director;
     protected final List<Actor> listOfActors;
     private static final Logger log = Logger.getLogger(Show.class.getName());
 
-    public Show(String title, int duration, Person director) {
+    public Show(String title, int duration, Director director) {
         this.title = title;
         this.duration = duration;
         this.director = director;
@@ -23,42 +23,44 @@ public abstract class Show {
     }
 
     public void printActors() {
-        System.out.printf("%s \"%s\" actors list:\n", this.getClass().getSimpleName(), title);
+        System.out.printf("%s \"%s\" actors list:\n", getClass().getSimpleName(), title);
         for (Actor actor : listOfActors) {
             System.out.printf("%s %s (%d)\n", actor.getName(), actor.getSurName(), actor.getHeight());
         }
     }
 
-    public void addActor(Person actor) {
-        if (!(actor instanceof Actor)) {
-            log.warning("Rejected. Invalid type.");
+    public void addActor(Actor actor) {
+        if (actor == null) {
+            log.warning("Rejected. Null not allowed.");
             return;
         }
-        if (listOfActors.contains((Actor) actor)) {
-            log.warning("Rejected. Attempt to add existing actor: " + actor);
+
+        if (listOfActors.contains(actor)) {
+            log.warning("Rejected. Attempt to add existing actor: " + actor.getSurName());
             return;
         }
+
         listOfActors.add((Actor) actor);
-        log.info("Added new actor: " + actor);
+        System.out.printf("Added new actor: %s\n", actor);
     }
 
-    public void changeActor(Person oldActor, Person newActor) {
-        if (!(oldActor instanceof Actor && newActor instanceof Actor)) {
-            log.warning("Rejected. Invalid types.");
-            return;
-        }
-        int oldActorIndex = listOfActors.indexOf(oldActor);
+    public void changeActor(String surName, Actor newActor) {
+        int oldActorIndex = listOfActors.indexOf(listOfActors.stream()
+                .filter(actor -> actor.getSurName().equals(surName))
+                .findAny().orElse(null));
+
         if (oldActorIndex == -1) {
-            log.warning("Rejected. Actor not found: " + oldActor);
+            log.warning("Rejected. Actor with sur name \"" + surName + "\" not found.");
             return;
         }
-        listOfActors.set(oldActorIndex, (Actor) newActor);
-        log.info("Actors changed. Added actor: "
-                + newActor + "\n" + "Removed actor: " + oldActor);
+
+        listOfActors.set(oldActorIndex, newActor);
+        System.out.printf("Actors changed. Added actor: \"%s\" Removed actor: \"%s\"\n",
+                newActor.getSurName(), surName);
     }
 
-    public void getDirector() {
-        System.out.println("Show director is "
-                + director.getName() + " " + director.getSurName() + ".");
+    public void printDirector() {
+        System.out.printf("%s director is %s %s.\n",
+                getClass().getSimpleName(), director.getName(), director.getSurName());
     }
 }

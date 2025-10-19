@@ -1,19 +1,18 @@
 import person.Actor;
 import person.Director;
 import person.Gender;
-import person.Person;
 import show.*;
 
 public class Theatre {
 
     public static void main(String[] args) {
-        Person actor1 = new Actor(Gender.MALE, "Jesse", "Heiman", 183);
-        Person actor2 = new Actor(Gender.MALE, "Leonardo", "DiCaprio", 184);
-        Person actor3 = new Actor(Gender.FEMALE, "Scarlett", "Johansson", 185);
+        Actor actor1 = new Actor(Gender.MALE, "Jesse", "Heiman", 183);
+        Actor actor2 = new Actor(Gender.MALE, "Leonardo", "DiCaprio", 184);
+        Actor actor3 = new Actor(Gender.FEMALE, "Scarlett", "Johansson", 185);
 
-        Person director1 = new Director(Gender.MALE, "Christopher",
+        Director director1 = new Director(Gender.MALE, "Christopher",
                 "Nolan", 20);
-        Person director2 = new Director(Gender.MALE, "Denis",
+        Director director2 = new Director(Gender.MALE, "Denis",
                 "Villeneuve", 15);
 
         Show play = new Play("Romeo and Juliet", 160, director1);
@@ -33,12 +32,13 @@ public class Theatre {
 
         ballet.addActor(actor1);
         ballet.addActor(actor2);
+        System.out.println();
 
-        // Проверки на дублирование, постороннй тип, null, на отсутствие актера для замены.
+        // Проверки на дублирование, null, на отсутствие актера для замены.
         ballet.addActor(actor2);
-        ballet.addActor(director1);
         ballet.addActor(null);
-        ballet.changeActor(actor3, actor1);
+        ballet.changeActor("Johansson", actor1);
+        System.out.println();
 
         // выводим списки в консоль
         ballet.printActors();
@@ -48,7 +48,8 @@ public class Theatre {
         System.out.println();
 
         opera.printActors();
-        opera.changeActor(actor1, actor2);
+        System.out.println();
+        opera.changeActor("Heiman", actor2);
         System.out.println();
         opera.printActors(); // проверка замены элемента
 
@@ -57,6 +58,6 @@ public class Theatre {
         ballet.printLibretto();
 
         System.out.println();
-        ballet.getDirector();
+        ballet.printDirector();
     }
 }
