@@ -4,19 +4,19 @@ public abstract class Person {
 
     protected final Gender gender;
     protected final String name;
-    protected final String surName;
+    protected final String surname;
 
-    public Person(Gender gender, String name, String surName) {
+    public Person(Gender gender, String name, String surname) {
         this.gender = gender;
         this.name = name;
-        this.surName = surName;
+        this.surname = surname;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 }

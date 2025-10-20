@@ -6,8 +6,8 @@ public final class Actor extends Person {
 
     private final int height;
 
-    public Actor(Gender gender, String name, String surName, int height) {
-        super(gender, name, surName);
+    public Actor(Gender gender, String name, String surname, int height) {
+        super(gender, name, surname);
         this.height = height;
     }
 
@@ -17,13 +17,13 @@ public final class Actor extends Person {
         if (!(o instanceof Actor otherActor)) return false;
         return Objects.equals(gender, otherActor.gender)
                 && Objects.equals(name, otherActor.name)
-                && Objects.equals(surName, otherActor.surName)
+                && Objects.equals(surname, otherActor.surname)
                 && height == otherActor.height;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gender, name, surName, height);
+        return Objects.hash(gender, name, surname, height);
     }
 
     public int getHeight() {
@@ -36,7 +36,7 @@ public final class Actor extends Person {
                 "height=" + height +
                 ", gender=" + gender +
                 ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
+                ", surName='" + surname + '\'' +
                 '}';
     }
 }

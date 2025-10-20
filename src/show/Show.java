@@ -25,7 +25,7 @@ public abstract class Show {
     public void printActors() {
         System.out.printf("%s \"%s\" actors list:\n", getClass().getSimpleName(), title);
         for (Actor actor : listOfActors) {
-            System.out.printf("%s %s (%d)\n", actor.getName(), actor.getSurName(), actor.getHeight());
+            System.out.printf("%s %s (%d)\n", actor.getName(), actor.getSurname(), actor.getHeight());
         }
     }
 
@@ -36,7 +36,7 @@ public abstract class Show {
         }
 
         if (listOfActors.contains(actor)) {
-            log.warning("Rejected. Attempt to add existing actor: " + actor.getSurName());
+            log.warning("Rejected. Attempt to add existing actor: " + actor.getSurname());
             return;
         }
 
@@ -44,23 +44,23 @@ public abstract class Show {
         System.out.printf("Added new actor: %s\n", actor);
     }
 
-    public void changeActor(String surName, Actor newActor) {
+    public void changeActor(String surname, Actor newActor) {
         int oldActorIndex = listOfActors.indexOf(listOfActors.stream()
-                .filter(actor -> actor.getSurName().equals(surName))
+                .filter(actor -> actor.getSurname().equals(surname))
                 .findAny().orElse(null));
 
         if (oldActorIndex == -1) {
-            log.warning("Rejected. Actor with sur name \"" + surName + "\" not found.");
+            log.warning("Rejected. Actor with surname \"" + surname + "\" not found.");
             return;
         }
 
         listOfActors.set(oldActorIndex, newActor);
         System.out.printf("Actors changed. Added actor: \"%s\" Removed actor: \"%s\"\n",
-                newActor.getSurName(), surName);
+                newActor.getSurname(), surname);
     }
 
     public void printDirector() {
         System.out.printf("%s director is %s %s.\n",
-                getClass().getSimpleName(), director.getName(), director.getSurName());
+                getClass().getSimpleName(), director.getName(), director.getSurname());
     }
 }
