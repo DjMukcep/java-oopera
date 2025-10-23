@@ -31,17 +31,19 @@ public abstract class Show {
 
     public void addActor(Actor actor) {
         if (actor == null) {
-            log.warning("Rejected. Null not allowed.");
+            log.warning("Rejected. "
+                    + getClass().getSimpleName() + " - null not allowed.");
             return;
         }
 
         if (listOfActors.contains(actor)) {
-            log.warning("Rejected. Attempt to add existing actor: " + actor.getSurname());
+            log.warning("Rejected. "
+                    + getClass().getSimpleName() + " - attempt to add existing actor: " + actor.getSurname());
             return;
         }
 
         listOfActors.add((Actor) actor);
-        System.out.printf("Added new actor: %s\n", actor);
+        System.out.printf("%s - added new actor: %s\n", getClass().getSimpleName(), actor);
     }
 
     public void changeActor(String surnameToDelete, Actor newActor) {
@@ -50,13 +52,14 @@ public abstract class Show {
                 .findAny().orElse(null));
 
         if (oldActorIndex == -1) {
-            log.warning("Rejected. Actor with surname \"" + surnameToDelete + "\" not found.");
+            log.warning("Rejected. " + getClass().getSimpleName()
+                    + " - actor with surname \"" + surnameToDelete + "\" not found.");
             return;
         }
 
         listOfActors.set(oldActorIndex, newActor);
-        System.out.printf("Actors changed. Added actor: \"%s\" Removed actor: \"%s\"\n",
-                newActor.getSurname(), surnameToDelete);
+        System.out.printf("%s - actors changed. Added actor: \"%s\" Removed actor: \"%s\"\n",
+                getClass().getSimpleName(), newActor.getSurname(), surnameToDelete);
     }
 
     public void printDirector() {

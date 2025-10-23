@@ -14,11 +14,20 @@ public class Theatre {
         Director director2 = new Director(Gender.MALE, "Denis", "Villeneuve", 15);
 
         Show play = new Play("Romeo and Juliet", 160, director1);
-        MusicalShow opera = new Opera("Carmen", 180, director2,
-                "Jorge Bizet", "opera libretto", 40);
-        MusicalShow ballet = new Ballet("The Nutcracker", 100, director2,
+
+        MusicalShow opera = new Opera(
+                "Carmen",
+                180, director2,
+                "Jorge Bizet",
+                "opera libretto",
+                40);
+
+        MusicalShow ballet = new Ballet(
+                "The Nutcracker",
+                100, director2,
                 "Pyotr Ilyich Tchaikovsky",
-                "balet libretto", "Marius Petipa");
+                "balet libretto",
+                "Marius Petipa");
 
         // добавляем актеров
         play.addActor(actor1);
