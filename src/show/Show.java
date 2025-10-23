@@ -44,19 +44,19 @@ public abstract class Show {
         System.out.printf("Added new actor: %s\n", actor);
     }
 
-    public void changeActor(String surname, Actor newActor) {
+    public void changeActor(String surnameToDelete, Actor newActor) {
         int oldActorIndex = listOfActors.indexOf(listOfActors.stream()
-                .filter(actor -> actor.getSurname().equals(surname))
+                .filter(actor -> actor.getSurname().equals(surnameToDelete))
                 .findAny().orElse(null));
 
         if (oldActorIndex == -1) {
-            log.warning("Rejected. Actor with surname \"" + surname + "\" not found.");
+            log.warning("Rejected. Actor with surname \"" + surnameToDelete + "\" not found.");
             return;
         }
 
         listOfActors.set(oldActorIndex, newActor);
         System.out.printf("Actors changed. Added actor: \"%s\" Removed actor: \"%s\"\n",
-                newActor.getSurname(), surname);
+                newActor.getSurname(), surnameToDelete);
     }
 
     public void printDirector() {

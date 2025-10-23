@@ -10,10 +10,8 @@ public class Theatre {
         Actor actor2 = new Actor(Gender.MALE, "Leonardo", "DiCaprio", 184);
         Actor actor3 = new Actor(Gender.FEMALE, "Scarlett", "Johansson", 185);
 
-        Director director1 = new Director(Gender.MALE, "Christopher",
-                "Nolan", 20);
-        Director director2 = new Director(Gender.MALE, "Denis",
-                "Villeneuve", 15);
+        Director director1 = new Director(Gender.MALE, "Christopher", "Nolan", 20);
+        Director director2 = new Director(Gender.MALE, "Denis", "Villeneuve", 15);
 
         Show play = new Play("Romeo and Juliet", 160, director1);
         MusicalShow opera = new Opera("Carmen", 180, director2,
