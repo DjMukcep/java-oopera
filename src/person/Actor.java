@@ -36,7 +36,7 @@ public final class Actor extends Person {
                 "height=" + height +
                 ", gender=" + gender +
                 ", name='" + name + '\'' +
-                ", surName='" + surname + '\'' +
+                ", surname='" + surname + '\'' +
                 '}';
     }
 }

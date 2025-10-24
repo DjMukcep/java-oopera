@@ -1,11 +1,10 @@
-import person.Actor;
-import person.Director;
-import person.Gender;
+import person.*;
 import show.*;
 
 public class Theatre {
 
     public static void main(String[] args) {
+
         Actor actor1 = new Actor(Gender.MALE, "Jesse", "Heiman", 183);
         Actor actor2 = new Actor(Gender.MALE, "Leonardo", "DiCaprio", 184);
         Actor actor3 = new Actor(Gender.FEMALE, "Scarlett", "Johansson", 185);
@@ -41,7 +40,7 @@ public class Theatre {
         ballet.addActor(actor2);
         System.out.println();
 
-        // Проверки на дублирование, null, на отсутствие актера для замены.
+        // Проверки на дублирование, null, на отсутствие актера с такой фамилией.
         ballet.addActor(actor2);
         ballet.addActor(null);
         ballet.changeActor("Johansson", actor1);
