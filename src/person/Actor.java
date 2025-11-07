@@ -15,15 +15,14 @@ public final class Actor extends Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Actor otherActor)) return false;
-        return Objects.equals(gender, otherActor.gender)
-                && Objects.equals(name, otherActor.name)
+        return Objects.equals(name, otherActor.name)
                 && Objects.equals(surname, otherActor.surname)
                 && height == otherActor.height;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gender, name, surname, height);
+        return Objects.hash(name, surname, height);
     }
 
     public int getHeight() {

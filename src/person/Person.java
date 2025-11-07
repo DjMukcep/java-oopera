@@ -1,6 +1,6 @@
 package person;
 
-public abstract class Person {
+public class Person {
 
     protected final Gender gender;
     protected final String name;
